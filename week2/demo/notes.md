@@ -1,6 +1,6 @@
 # SOLID Notes
 
-- See [SOLID Columns by "Uncle Bob" Martin](https://moodle.bbk.ac.uk/mod/folder/view.php?id=2475182).
+- See [SOLID Columns by "Uncle Bob" Martin](https://moodle.bbk.ac.uk/mod/folder/view.php?id=2595165).
 - General principles of good software design -- flexible, robust to change, not fragile.
 - But just for this talk, I will call it "SIOLD"! Rearranging the order of the principles, in the hope that this version
   of the story is easier to digest.
