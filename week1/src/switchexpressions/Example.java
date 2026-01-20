@@ -1,7 +1,23 @@
 package switchexpressions;
 
 enum Day {
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+    SUNDAY("Sun"),
+    MONDAY("Mon"),
+    TUESDAY("Tue"),
+    WEDNESDAY("Wed"),
+    THURSDAY("Thu"),
+    FRIDAY("Fri"),
+    SATURDAY("Sat");
+
+    private final String abbreviation;
+
+    Day(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
+
+    public String abbreviation() {
+        return abbreviation;
+    }
 }
 
 public class Example {
@@ -13,6 +29,8 @@ public class Example {
         final int numLetters;
         switch (day) {
             case MONDAY:
+                // fall through!
+                System.out.println(Day.MONDAY.abbreviation());
             case FRIDAY:
             case SUNDAY:
                 numLetters = 6;
