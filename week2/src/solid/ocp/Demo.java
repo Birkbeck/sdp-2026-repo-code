@@ -1,5 +1,8 @@
 package solid.ocp;
 
+interface Shape {
+}
+
 class Circle implements Shape {
 }
 

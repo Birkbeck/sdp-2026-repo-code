@@ -17,7 +17,20 @@ public class TimedDoor implements Door {
         return false;
     }
 
-    public void timeout() {
+    void timeout() {
         /* implementation */
+    }
+}
+
+class TimedDoorAdapter implements TimerClient {
+    private final TimedDoor door;
+
+    TimedDoorAdapter(TimedDoor door) {
+        this.door = door;
+    }
+
+    @Override
+    public void timeout() {
+        door.timeout();
     }
 }

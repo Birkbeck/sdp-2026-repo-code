@@ -1,5 +1,9 @@
 package solid.refactored.ocp;
 
+interface Shape {
+    void draw();
+}
+
 class Circle implements Shape {
     @Override
     public void draw() {
