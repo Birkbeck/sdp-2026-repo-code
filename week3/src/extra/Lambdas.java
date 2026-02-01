@@ -1,6 +1,7 @@
 package extra;
 
 import java.util.Arrays;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 // the annotation is optional,
@@ -64,7 +65,7 @@ public class Lambdas {
 
     static void methodReferences() {
         // all three match the same method signature
-        //    void method-name(String)
+        //    void method-name(Lambdas)
         Consumer<Lambdas> c = Lambdas::f;
         Consumer<Lambdas> c2 = Lambdas::g;
         Consumer<Lambdas> c3 = Lambdas::g2;
@@ -74,6 +75,12 @@ public class Lambdas {
         f(l);  // as a parameter
         l.g(); // as an object on which the method is called (this)
         l.g2(); // same here
+
+        // all three match the same method signature
+        //     void method-name()
+        Runnable r = () -> f(l);
+        Runnable r2 = l::g;
+        Runnable r3 = l::g2;
     }
 
     static void f(Lambdas lambdas) {
