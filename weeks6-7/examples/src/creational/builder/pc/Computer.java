@@ -64,15 +64,11 @@ public class Computer {
 
         // required parameters
         private final String HDD;
-        private String RAM;
+        private final String RAM;
 
         // optional parameters
         private boolean isGraphicsCardEnabled;
         private boolean isBluetoothEnabled;
-
-        public Builder(String hdd) {
-            this.HDD = hdd;
-        }
 
         public Builder(String hdd, String ram) {
             this.HDD = hdd;
