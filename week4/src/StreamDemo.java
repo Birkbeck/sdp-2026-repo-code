@@ -11,6 +11,10 @@ record Pair<T>(T a, T b) {
 public class StreamDemo {
 
     public static void main(String... args) {
+        parallelStreamDontDo();
+    }
+
+    static void streamExamples() {
         List<Dish> list = Dish.getMenu();
 
         list.stream()
@@ -152,6 +156,32 @@ public class StreamDemo {
                 .map(Dish::calories)
                 .parallel()
                 .reduce(0, Integer::sum, Integer::sum);
+    }
 
+    // accumulator and reducer are both associative but not necessarily commutative
+    // associativity: a + b + c = (a + b) + c = a + (b + c) -
+    // commutativity: a + b = b + a
+    static void parallelStreams() {
+        System.out.println(
+                Stream.iterate(0, i -> i + 1)
+                        .map(i -> "" + i)
+                        .limit(102400)
+                        .parallel()
+                        .reduce(
+                                "",
+                                (r, e) -> r + e + "/",
+                                (r1, r2) -> r1 + "\n" + r2));
+    }
+
+    static void parallelStreamDontDo() {
+        List<String> list = new ArrayList<>();
+        int c = 0;
+        int s = Stream.iterate(0, i -> i + 1)
+                .map(i -> "" + i)
+                .limit(102400)
+                .parallel()
+                .collect(Collectors.toList()).size();
+                //.forEach(e -> list.add(e));
+        System.out.println(s);
     }
 }
