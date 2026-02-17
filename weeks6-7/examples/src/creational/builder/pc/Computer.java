@@ -59,6 +59,10 @@ public class Computer {
         return Objects.hash(getHDD(), getRAM(), isGraphicsCardEnabled(), isBluetoothEnabled());
     }
 
+    public static Builder builder(String hdd, String ram) {
+        return new Builder(hdd, ram);
+    }
+
     //Builder Class
     public static class Builder {
 
@@ -70,7 +74,7 @@ public class Computer {
         private boolean isGraphicsCardEnabled;
         private boolean isBluetoothEnabled;
 
-        public Builder(String hdd, String ram) {
+        private Builder(String hdd, String ram) {
             this.HDD = hdd;
             this.RAM = ram;
         }

@@ -15,13 +15,9 @@ public class ItemRegistry {
     }
 
     private void loadCache() {
-        Book book = new Book();
-        book.setTitle("Design Patterns");
-        book.setPrice(20.00);
+        Book book = new Book("Design Patterns", 20.00);
         map.put("Book", book);
-        CD cd = new CD();
-        cd.setTitle("Various");
-        cd.setPrice(10.00);
+        CD cd = new CD("Various", 10.00);
         map.put("CD", cd);
     }
 }
