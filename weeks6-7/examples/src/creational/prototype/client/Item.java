@@ -19,13 +19,23 @@ public abstract class Item implements Cloneable {
             //   clonedItem is a CD, if this is a CD
             Item clonedItem = (Item) super.clone();
             // specialised clone
-            clonedItem.price = price;
-            clonedItem.title = title;
+            clonedItem.setPrice(price);
+            clonedItem.setTitle(title);
             return clonedItem;
         }
         catch (CloneNotSupportedException e) {
             throw new AssertionError("impossible");
         }
+    }
+
+    public void setTitle(String title) {
+        System.out.println("setting the title");
+        this.title = title;
+    }
+
+    public void setPrice(double price) {
+        System.out.println("setting price");
+        this.price = price;
     }
 
     public String getTitle() {
