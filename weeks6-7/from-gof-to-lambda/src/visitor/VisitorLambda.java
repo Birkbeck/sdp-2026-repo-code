@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
 
 public class VisitorLambda {
 
@@ -95,7 +96,7 @@ public class VisitorLambda {
 
 
     // requires pattern matching for switch (from Java 21)
-    static Function<Shape, Double> perimeterVisitorWithSwitch = o ->
+    static ToDoubleFunction<Shape> perimeterVisitorWithSwitch = o ->
             switch (o) {
                 case Square s -> 4 * s.side;
                 case Circle c -> 2 * Math.PI * c.radius;

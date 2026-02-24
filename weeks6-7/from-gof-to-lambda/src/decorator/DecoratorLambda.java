@@ -30,13 +30,13 @@ public class DecoratorLambda {
                         DoubleUnaryOperator::andThen);
 
         return calculator.applyAsDouble(annualGross);
+    }
 
-/*
+    public static double calculateSalary2(double annualGross, DoubleUnaryOperator... taxes) {
         return Stream.of(taxes)
                 .collect(Collector.of(
                         () -> annualGross,
                         (v, f) -> f.applyAsDouble(v),
                         (v1, v2) -> 0.0));
- */
     }
 }

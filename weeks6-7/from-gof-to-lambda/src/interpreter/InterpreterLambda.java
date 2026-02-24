@@ -1,19 +1,16 @@
 package interpreter;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 import java.util.function.IntBinaryOperator;
 
 public class InterpreterLambda {
-    static Map<String, IntBinaryOperator> opMap = new HashMap<>();
+    static Map<String, IntBinaryOperator> opMap = Map.of(
+            "+", (a, b) -> a + b,
+            "*", (a, b) -> a * b,
+            "-", (a, b) -> a - b);
 
-    static {
-        opMap.put("+", (a, b) -> a + b);
-        opMap.put("*", (a, b) -> a * b);
-        opMap.put("-", (a, b) -> a - b);
-    }
-
+    // expression is in postfix notation (e.g., 4 3 +)
     public static int evaluate(String expression) {
         Stack<Integer> stack = new Stack<>();
         for (var s : expression.split(" ")) {

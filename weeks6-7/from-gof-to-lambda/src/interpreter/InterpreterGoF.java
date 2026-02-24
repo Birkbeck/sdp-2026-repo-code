@@ -17,6 +17,7 @@ public class InterpreterGoF {
         };
     }
 
+    // expression is in postfix notation (e.g., 4 3 +)
     public static int evaluate(String expression) {
         Stack<Expression> stack = new Stack<>();
         for (String s : expression.split(" ")) {
