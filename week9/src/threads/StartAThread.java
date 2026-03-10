@@ -13,6 +13,9 @@ public class StartAThread {
         Thread taskWithRunnable = new Thread(new TaskWithRunnable());
         taskWithRunnable.start();
 
+        Thread taskWithMethodReference = new Thread(StartAThread::taskWithMethodReference);
+        taskWithMethodReference.start();
+
         Thread taskWithLambda = new Thread(() ->
                 System.out.println("TaskWithLambda started..."));
         taskWithLambda.start();
@@ -22,7 +25,7 @@ public class StartAThread {
                 System.out.println("TaskWithLambda started... as a virtual thread"));
 
         // platform thread (requires Java 21)
-        Thread pt = Thread.ofPlatform().start(() ->
+        Thread pt = Thread.ofPlatform().name("a platform thread").start(() ->
                 System.out.println("TaskWithLambda started... as a virtual thread"));
 
         // thread pools
@@ -30,6 +33,10 @@ public class StartAThread {
             executorService.execute(() ->
                     System.out.println("TaskWithLambda started... from executor"));
         }
+    }
+
+    private static void taskWithMethodReference() {
+        System.out.println("TaskWithMethodReference started...");
     }
 }
 

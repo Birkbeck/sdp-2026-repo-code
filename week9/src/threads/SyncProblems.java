@@ -7,16 +7,16 @@ import java.util.stream.IntStream;
 public class SyncProblems {
     private static int count = 0;
 
-    public static void main(String[] args) {
-        for (int x = 0; x < 10; x++)
-            addNumbersInParallel();
+    public static void main(String... args) {
+        IntStream.range(0, 10)
+                .forEach(i -> addNumbersInParallel());
     }
 
     static void addNumbersInParallel() {
         count = 0;
         try (ExecutorService executor = Executors.newFixedThreadPool(2)) {
             IntStream.range(0, 10_000)
-                    .forEach(i -> executor.submit(SyncProblems::increment));
+                    .forEach(i -> executor.submit(SyncProblems::incrementSync));
         }
         System.out.println(count);
     }
@@ -25,7 +25,7 @@ public class SyncProblems {
         count++;
     }
 
-    static void incrementSync() {
+    static synchronized void incrementSync() {
         count++;
     }
 
