@@ -25,8 +25,10 @@ public class StartAThread {
                 System.out.println("TaskWithLambda started... as a virtual thread"));
 
         // platform thread (requires Java 21)
-        Thread pt = Thread.ofPlatform().name("a platform thread").start(() ->
-                System.out.println("TaskWithLambda started... as a virtual thread"));
+        Thread pt = Thread.ofPlatform()
+                .name("a platform thread")
+                .start(() ->
+                        System.out.println("TaskWithLambda started... as a virtual thread"));
 
         // thread pools
         try (ExecutorService executorService = Executors.newFixedThreadPool(10)) {
